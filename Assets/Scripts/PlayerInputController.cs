@@ -19,8 +19,8 @@ public class PlayerInputController : MonoBehaviour
         //Move
         playerController.OnMove(horizontalInput, verticalInput);
         //Rotation
-        mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * playerManager.horizontalSensitivty;
-        mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * playerManager.verticalSensitivty;
+        mouseX = Input.GetAxisRaw("Mouse X");
+        mouseY = Input.GetAxisRaw("Mouse Y");
         playerController.OnRotation(mouseX, mouseY);
         //Dodge
         if (Input.GetKey(KeyCode.R) && (playerManager.isGrounded))

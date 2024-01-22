@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Time;
 
 public class PlayerInputController : MonoBehaviour
 {
-    public PlayerManager _playerManager;
-    public PlayerController _playerController;
+    public PlayerManager playerManager;
+    public PlayerController playerController;
     public float horizontalInput;
     public float verticalInput;
     public float mouseX;
@@ -18,26 +17,26 @@ public class PlayerInputController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         //Move
-        _playerController.OnMove(horizontalInput, verticalInput);
+        playerController.OnMove(horizontalInput, verticalInput);
         //Rotation
-        mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _playerManager.horizontalSensitivty;
-        mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _playerManager.verticalSensitivty;
-        _playerController.OnRotation(mouseX, mouseY);
+        mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * playerManager.horizontalSensitivty;
+        mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * playerManager.verticalSensitivty;
+        playerController.OnRotation(mouseX, mouseY);
         //Dodge
-        if (Input.GetKey(KeyCode.R) && (_playerManager.isGrounded))
-        { _playerController.OnDodge();}
+        if (Input.GetKey(KeyCode.R) && (playerManager.isGrounded))
+        { playerController.OnDodge();}
         //Jump
-        if (Input.GetKey(KeyCode.Space) && (_playerManager.isGrounded))
-        { _playerController.OnJump();}
+        if (Input.GetKey(KeyCode.Space) && (playerManager.isGrounded))
+        { playerController.OnJump();}
         //Interact
         if (Input.GetKey(KeyCode.F))
-        { _playerController.OnInteract();}
+        { playerController.OnInteract();}
         //Attack
         if (Input.GetMouseButtonDown(0))
-        { _playerController.OnAttack();}
+        { playerController.OnAttack();}
         //Aim
         if (Input.GetMouseButtonDown(1))
-        { _playerController.OnAim();}
+        { playerController.OnAim();}
     }
 
 }

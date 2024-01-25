@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour
 {
-    public PlayerManager playerManager;
-    public PlayerController playerController;
-    public float horizontalInput;
-    public float verticalInput;
-    public float mouseX;
-    public float mouseY;
+    private PlayerManager playerManager;
+    private PlayerController playerController;
+    private float horizontalInput;
+    private float verticalInput;
+    private float mouseX;
+    private float mouseY;
     // Update is called once per frame
+    private void Start()
+    {
+        playerController= GetComponent<PlayerController>();
+        playerManager= GetComponent<PlayerManager>();
+    }
     void Update()
     {
         //takes Input for Horizontal and Vertical inputs

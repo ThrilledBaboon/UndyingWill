@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerManager playerManager;
-    public PlayerInputController playerInputController;
-    public Vector3 moveDirection;
-    public Vector3 movementVelocity;
-    public float xRotation;
-    public float yRotation;
-    public float timeOffset;
+    private PlayerManager playerManager;
+    private PlayerInputController playerInputController;
+    private Vector3 moveDirection;
+    private Vector3 movementVelocity;
+    private float xRotation;
+    private float yRotation;
+    private float timeOffset;
     private void Update()
     {
         if (timeOffset < playerManager.dodgeCooldown)
         {
             timeOffset += Time.deltaTime;
         }
+    }
+    private void Start()
+    {
+        playerManager = GetComponent<PlayerManager>();
+        playerInputController= GetComponent<PlayerInputController>();
     }
     public void OnMove(float horizontal, float vertical)
     {
